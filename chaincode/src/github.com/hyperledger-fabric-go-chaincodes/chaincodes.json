@@ -1,0 +1,68 @@
+{
+    "chaincodes": [
+        {
+            "name": "cc-account",
+            "version": "v1",
+            "endorserment": "",
+            "path": "github.com/hyperledger-fabric-go-chaincodes/account-chaincode",
+            "events": [
+                {
+                    "event": "accounts_created",
+                    "topic": "/topic/account"
+                },
+                {
+                    "event": "accounts_created",
+                    "topic": "/topic/chaincodes"
+                }
+            ]
+        },
+        {
+            "name": "cc-card",
+            "version": "v1",
+            "endorserment": "",
+            "path": "github.com/hyperledger-fabric-go-chaincodes/card-chaincode",
+            "events": [
+                {
+                    "event": "card_created",
+                    "topic": "/topic/card"
+                },
+                {
+                    "event": "card_created",
+                    "topic": "/topic/chaincodes"
+                }
+            ]
+        },
+        {
+            "name": "cc-transfer",
+            "version": "v1",
+            "endorserment": "",
+            "path": "github.com/hyperledger-fabric-go-chaincodes/transfer-chaincode",
+            "events": [
+                {
+                    "event": "transfer_created",
+                    "topic": "/topic/transfer"
+                },
+                {
+                    "event": "transfer_created",
+                    "topic": "/topic/chaincodes"
+                }
+            ]
+        }
+    ],
+    "channels": [
+        {
+            "name": "channelone",
+            "chaincodes": [
+                {
+                    "name": "cc-account"
+                },
+                {
+                    "name": "cc-card"
+                },
+                {
+                    "name": "cc-transfer"
+                }
+            ]
+        }
+    ]
+}

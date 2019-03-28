@@ -1,0 +1,12 @@
+-- Install and Instantiate
+{
+  "name": "cc-account",
+  "path": "github.com/hyperledger-fabric-go-chaincodes/account-chaincode",
+  "version": "v1"
+}
+
+{
+  "balance": "1000",
+  "id": "1",
+  "owner": "Elcius"
+}

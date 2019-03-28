@@ -1,0 +1,15 @@
+identities:  # list roles to be used in the policy
+    user1: {"role": {"name": "member", "mspId": "org1MSP"}} 
+    user2: {"role": {"name": "member", "mspId": "org1MSP"}} 
+    user3: {"role": {"name": "member", "mspId": "org2MSP"}} 
+    user4: {"role": {"name": "member", "mspId": "org2MSP"}} 
+    
+
+policy: 
+    2-of:
+      - 1-of:
+        - signed-by: "user1"
+        - signed-by: "user2"
+      - 2-of:
+        - signed-by: "user3"
+        - signed-by: "user4"

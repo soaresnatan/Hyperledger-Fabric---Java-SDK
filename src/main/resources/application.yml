@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: control-id-services
+
+server:
+  port: 3000
