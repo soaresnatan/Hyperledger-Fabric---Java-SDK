@@ -26,15 +26,15 @@ public class CreateIdentity {
 	public static void main(String[] args) {
 		try {
 			String certificate;
-			certificate = new String(IOUtils.toByteArray(new FileInputStream("./network-test/crypto-config/peerOrganizations/org2-domain-com/users/Admin@org2-domain-com/msp/signcerts/Admin@org2-domain-com-cert.pem")), "UTF-8");
-			PrivateKey privateKey = getPrivateKeyFromBytes(IOUtils.toByteArray(new FileInputStream("./network-test/crypto-config/peerOrganizations/org2-domain-com/users/Admin@org2-domain-com/msp/keystore/8146a1a433a560271aeb68bbbf365c0b478f229938d4b2492cee349ba27ef0e6_sk")));
+			certificate = new String(IOUtils.toByteArray(new FileInputStream("./basic-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem")), "UTF-8");
+			PrivateKey privateKey = getPrivateKeyFromBytes(IOUtils.toByteArray(new FileInputStream("./basic-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/cd96d5260ad4757551ed4a5a991e62130f8008a0bf996e4e4b84cd097a747fec_sk")));
 			
 			//certificate = new String(IOUtils.toByteArray(new FileInputStream("./network/crypto-config/peerOrganizations/org3-be-com/users/Admin@org3-be-com/msp/signcerts/Admin@org3-be-com-cert.pem")), "UTF-8");
 			//PrivateKey privateKey = getPrivateKeyFromBytes(IOUtils.toByteArray(new FileInputStream("./network/crypto-config/peerOrganizations/org3-be-com/users/Admin@org3-be-com/msp/keystore/0c53ba1c5993219f2bee87e2c545ddccf934095962d11955f3040270ec873707_sk")));
 			StoreEnrollement storeEnroll = new StoreEnrollement(privateKey, certificate);
 			System.out.print(storeEnroll.getCert());
-			Identity identityTmp = new Identity("org2", "org2", "org2MSP", storeEnroll);
-			serializeObject("./wallet/orgatest2.dat",identityTmp);
+			Identity identityTmp = new Identity("adminorg1", "Org1", "Org1MSP", storeEnroll);
+			serializeObject("./wallet/adminorg1.dat",identityTmp);
 		} catch (IOException | NoSuchProviderException | NoSuchAlgorithmException | InvalidKeySpecException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
