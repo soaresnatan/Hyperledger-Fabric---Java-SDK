@@ -1,0 +1,12 @@
+-- Install and Instantiate
+{
+  "name": "cc-card",
+  "path": "github.com/hyperledger-fabric-go-chaincodes/card-chaincode",
+  "version": "v1"
+}
+
+- Create card
+{
+  "accountNumber": "1",
+  "cardNumber": "10"
+}

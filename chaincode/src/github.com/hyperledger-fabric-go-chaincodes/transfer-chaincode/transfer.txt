@@ -1,0 +1,12 @@
+-- Install and Instantiate
+{
+  "name": "cc-transfer",
+  "path": "github.com/hyperledger-fabric-go-chaincodes/transfer-chaincode",
+  "version": "v1"
+}
+
+{
+  "accountPayer": "1",
+  "accountReceiver": "2",
+  "amount": "500"
+}
