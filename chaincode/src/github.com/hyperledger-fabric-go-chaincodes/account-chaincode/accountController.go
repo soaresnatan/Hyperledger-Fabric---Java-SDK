@@ -4,21 +4,24 @@ peer chaincode install -n cc-account -p github.com/hyperledger-fabric-go-chainco
 peer chaincode instantiate -o orderer.example.com:7050 -C mychannel -n cc-account -c '{"Args":["init"]}' -v v1
 peer chaincode upgrade -o orderer.example.com:7050 -C mychannel -n cc-account -c '{"Args":["init"]}' -v v2
 
+==== List chaincodes ====
+peer chaincode list --installed
+peer chaincode list --instantiated -C mychannel
 
 ==== Accounts ====
--- Invokes
+ +++ Invokes
 peer chaincode invoke -C mychannel -n cc-account -c '{"Args":["Init"]}'
 peer chaincode invoke -C mychannel -n cc-account -c '{"Args":["Create","1","1000","Elcius"]}'
 peer chaincode invoke -C mychannel -n cc-account -c '{"Args":["Create","2","1000","Natan"]}'
-
+peer chaincode invoke -C mychannel -n cc-account -c '{"Args":["Create","6","1000","Alisson"]}'
 peer chaincode invoke -C mychannel -n cc-account -c '{"Args":["Delete","1"]}'
+peer chaincode invoke -C mychannel -n cc-account -c '{"Args":["Update","{\"accountBalance\":7000,\"accountNumber\":2,\"accountOwner\":\"Natanael\",\"docType\":\"Account\"}"]}'
 
--- Queries
-peer chaincode query -C mychannel -n cc-account -c '{"Args":["GetByNumber","1"]}'
-
-peer chaincode query -C mychannel -n cc-account -c '{"Args":["GetHistory","1"]}'
-
-peer chaincode query -C mychannel -n cc-account -c '{"Args":["GetByOwner","Elcius"]}'
+ +++ Queries
+peer chaincode query -C mychannel -n cc-account -c '{"Args":["GetAll"]}' | jq
+peer chaincode query -C mychannel -n cc-account -c '{"Args":["GetByNumber","1"]}' | jq
+peer chaincode query -C mychannel -n cc-account -c '{"Args":["GetByOwner","Elcius"]}' | jq
+peer chaincode query -C mychannel -n cc-account -c '{"Args":["GetHistory","1"]}' | jq
 */
 
 package main
@@ -36,11 +39,11 @@ import (
 type AccountsChaincode struct {
 }
 
-//  Main
+// Main
 func main() {
 	err := shim.Start(new(AccountsChaincode))
 	if err != nil {
-		fmt.Printf("Error initializing Accounts Chaincode: %s", err)
+		fmt.Println("failed to initialize accounts chaincode" + err.Error())
 	}
 }
 
@@ -52,7 +55,7 @@ func (t *AccountsChaincode) Init(stub shim.ChaincodeStubInterface) peer.Response
 // Invoke - Entry point for Invocations
 func (t *AccountsChaincode) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 	function, args := stub.GetFunctionAndParameters()
-	fmt.Println("Accounts Invoke is running " + function)
+	fmt.Println("[DEBUG] Accounts chaincode invoking " + function + " function")
 
 	// Handle different functions
 	switch function {
@@ -60,18 +63,20 @@ func (t *AccountsChaincode) Invoke(stub shim.ChaincodeStubInterface) peer.Respon
 		return account.Init(stub)
 	case "Create":
 		return account.Create(stub, args)
+	case "GetAll":
+		return account.GetAll(stub)
 	case "GetByNumber":
 		return account.GetByNumber(stub, args)
 	case "GetByOwner":
 		return account.GetByOwner(stub, args)
-	case "UpdateByNumber":
-		return account.UpdateByNumber(stub, args)
+	case "Update":
+		return account.Update(stub, args)
 	case "Delete":
 		return account.Delete(stub, args)
 	case "GetHistory":
-		return account.GetHistory(stub, args)
+		return account.GetHistoryByAccNumber(stub, args)
 	default:
 		// Error
-		return shim.Error("Received unknown function invocation on Account Chaincode")
+		return shim.Error("received unknown function invocation on account chaincode")
 	}
 }

@@ -79,7 +79,6 @@ func Create(stub shim.ChaincodeStubInterface, args []string) peer.Response {
 		return shim.Error("Error: Could not put state of card: " + err.Error())
 	}
 
-        stub.SetEvent("card_created", []byte("Success create Card"))
 	// Card saved and indexed. Return success
 	fmt.Println("-- Ending card Create")
 	return shim.Success([]byte("Card created!"))
@@ -109,4 +108,31 @@ func GetByNumber(stub shim.ChaincodeStubInterface, args []string) peer.Response 
 
 	fmt.Println("-- Ending GetCardByNumber")
 	return shim.Success(cardAsJSON)
+}
+
+// GetAll - Get all cards in World State
+// params: none
+func GetAll(stub shim.ChaincodeStubInterface) peer.Response {
+	fmt.Println("-- Starting card: GetAll")
+
+	cardsIterator, err := stub.GetStateByRange("", "")
+	defer cardsIterator.Close()
+	if err != nil {
+		return shim.Error("Error while querying ledger. Error: " + err.Error())
+	}
+
+	var records []string
+	if cardsIterator.HasNext() {
+		for cardsIterator.HasNext() {
+			recordAsBytes, err := cardsIterator.Next()
+			if err != nil {
+				return shim.Error("Error while iterating through ledger. Error: " + err.Error())
+			}
+
+			records = append(records, string(recordAsBytes.Value[:]))
+		}
+	}
+
+	fmt.Println(records)
+	return shim.Success([]byte("Success"))
 }
