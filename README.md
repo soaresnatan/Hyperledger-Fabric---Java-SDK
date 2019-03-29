@@ -36,8 +36,6 @@ As seguintes funcionalidades foram desenvolvidas para esta aplicação.
 * Informações sobre o bloco, utilizando uma ID
 * Informações sobre o bloco, utilizando o número do bloco
 
-**OBS: Comunicação utilizando TLS e arquivo de conexão para inicialização.**
-
 #### Organização do projeto
 -> src/main/java: *Projeto java* <p>
 -> chaincode/src/github.com/hyperledger-fabric-go-chaincodes: *Localização dos chaincodes*<p>
@@ -92,8 +90,8 @@ Utilizando uma IDE de sua preferencia
 ##### Fluxo transações
 ![Fluxo](./fluxograma/Transacoes.png)
 
-** Utilizar a identidade adminorg1, para conexão.** 
-** Utilizar o canal mychannel, para as transações.** 
+** Utilizar a identidade adminorg1, para conexão. ** 
+** Utilizar o canal mychannel, para as transações. ** 
 
 
 
