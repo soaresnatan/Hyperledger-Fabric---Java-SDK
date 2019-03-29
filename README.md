@@ -36,13 +36,11 @@ As seguintes funcionalidades foram desenvolvidas para esta aplicação.
 * Informações sobre o bloco, utilizando uma ID
 * Informações sobre o bloco, utilizando o número do bloco
 
-**OBS: Comunicação utilizando TLS e arquivo de conexão para inicialização.**
-
 #### Organização do projeto
 -> src/main/java: *Projeto java* <p>
 -> chaincode/src/github.com/hyperledger-fabric-go-chaincodes: *Localização dos chaincodes*<p>
 -> endorsementypolicy: *Localização dos arquivos de política*<p>
--> network: *Localização dos arquivos de configuração da rede Fabric*<p>
+-> network-basic: *Localização dos arquivos de configuração da rede Fabric*<p>
 -> wallet: *Localização das identidades pertencentes a rede**<p>
 
 **OBS: O projeto inicial conta com as identidades de administrador das 3 oganizações, definidas como objetos serializados em arquivos .dat**
@@ -54,30 +52,23 @@ Para iniciar a aplicação é necessario:
 
 **b.** Arquivo de conexão definindo a rede
 
-**c.** Arquivo de conexão definindo os chaincodes
-
 **d.** Executar a aplicação Java
 
 **e.** Acessar swagger
-
-**f.** Conectar cliente websocket
  
 #### Levantando a rede fabric
-1. Navegar para a pasta *./network*
+1. Navegar para a pasta *./network-basic*
 2. Executar o script start *~./start~*
 3. Aguardar o termino do script
 
 #### Arquivo de conexão definindo a rede
 A rede fabric levantada no passo anterior possui a seguinte configuração:
-* 3 organizações
-* 2 peers/org
-* 2 orderers
-* 3 canais
-* ** 3 identidades administradoras, respectivamente, org1,org2,org3**
+* 1 organizações
+* 1 peers/org
+* 1 orderers
+* 1 canais
 
-![Canais](./fluxograma/Channels.png)
-
-**PS: O arquivo de configuração pode ser visto em ./network/connection**
+**PS: O arquivo de configuração pode ser visto em ./network-basic/connection**
 
 #### Acessando a página swagger 
 
@@ -99,7 +90,8 @@ Utilizando uma IDE de sua preferencia
 ##### Fluxo transações
 ![Fluxo](./fluxograma/Transacoes.png)
 
-
+** Utilizar a identidade adminorg1, para conexão. ** 
+** Utilizar o canal mychannel, para as transações. ** 
 
 
 
