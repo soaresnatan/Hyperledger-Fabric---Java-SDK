@@ -29,7 +29,7 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @RequestMapping("/api/peer")
 @Api(value = "Título", description = "Descrição")
-public class RoutesPeer {
+public class PeerController {
 	@Autowired
 	private ChannelService channelServices;
 	

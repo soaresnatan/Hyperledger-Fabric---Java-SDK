@@ -36,7 +36,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/api/chaincode/transfer")
 @Api(value = "Título", description = "Descrição")
-public class RoutesTransfer {
+public class TransferController {
 
     @Autowired
     private ChaincodeServices chaincodeServices;

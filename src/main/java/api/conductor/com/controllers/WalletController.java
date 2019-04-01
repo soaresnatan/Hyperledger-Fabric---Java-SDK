@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/api/wallet")
 @Api(value = "Título", description = "Descrição")
-public class RoutesWallet {
+public class WalletController {
 	
 	@Autowired 
 	private AutowireCapableBeanFactory beanFactory;

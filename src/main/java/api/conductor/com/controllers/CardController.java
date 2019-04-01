@@ -34,7 +34,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/api/chaincode/card")
 @Api(value = "Título", description = "Descrição")
-public class RoutesCard {
+public class CardController {
 	
 	@Autowired
     private ChaincodeServices chaincodeServices;

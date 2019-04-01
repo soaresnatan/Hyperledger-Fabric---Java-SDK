@@ -33,7 +33,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/api/channel")
 @Api(value = "Título", description = "Descrição")
-public class RoutesChannel {
+public class ChannelController {
 
 	@Autowired
 	private ChannelService channelServices;

@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/api/transaction")
 @Api(value = "Título", description = "Descrição")
-public class RoutesTransaction {
+public class TransactionsController {
 	@Autowired
 	private BlocksServices blockServices;
 

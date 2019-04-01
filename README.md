@@ -43,18 +43,27 @@ As seguintes funcionalidades foram desenvolvidas para esta aplicação.
 -> network-basic: *Localização dos arquivos de configuração da rede Fabric*<p>
 -> wallet: *Localização das identidades pertencentes a rede**<p>
 
-**OBS: O projeto inicial conta com as identidades de administrador das 3 oganizações, definidas como objetos serializados em arquivos .dat**
+**OBS: O projeto inicial conta com a identidade de administrador da oganização, presente em .dat**
 
 #### Primeiros passos
 Para iniciar a aplicação é necessario:
 
-**a.** Rede Fabric em pé
+**a.** Importar projeto 
 
-**b.** Arquivo de conexão definindo a rede
+**b.** Rede Fabric em pé
+
+**c.** Arquivo de conexão definindo a rede
 
 **d.** Executar a aplicação Java
 
 **e.** Acessar swagger
+
+#### Importar projeto
+1. Abrir IDE, neste caso o Eclipse
+2. Arquivos
+3. Importar
+4. Maven
+5. Projetos maven existentes 
  
 #### Levantando a rede fabric
 1. Navegar para a pasta *./network-basic*
@@ -90,8 +99,8 @@ Utilizando uma IDE de sua preferencia
 ##### Fluxo transações
 ![Fluxo](./fluxograma/Transacoes.png)
 
-** Utilizar a identidade adminorg1, para conexão. ** 
-** Utilizar o canal mychannel, para as transações. ** 
+**Utilizar a identidade adminorg1, para conexão.** 
+**Utilizar o canal mychannel, para as transações.** 
 
 
 

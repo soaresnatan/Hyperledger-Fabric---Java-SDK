@@ -32,7 +32,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/api/chaincode")
 @Api(value = "Título", description = "Descrição")
-public class RoutesChaincode {
+public class ChaincodesController {
 	
 	@Autowired
     private ChaincodeServices chaincodeServices;
